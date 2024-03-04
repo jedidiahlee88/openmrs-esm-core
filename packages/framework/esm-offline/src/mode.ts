@@ -32,21 +32,25 @@ async function isPrivateBrowsing() {
 }
 
 export type OfflineMode = 'on' | 'off' | 'unavailable';
+export type OfflineHandler = () => void | Promise<void>;
 
 export interface OfflineModeResult {
   current: OfflineMode;
   notAvailable: boolean;
   active: boolean;
+  lastRun: string;
 }
 
-const offlineModeStorageKey = 'openmrs3:offline-mode';
+const offlineModeStorageKey = 'openmrs:offline-mode';
 let offlineMode: OfflineMode = 'unavailable';
+let lastRun: string = '';
 
 export function getCurrentOfflineMode(): OfflineModeResult {
   return {
     current: offlineMode,
     notAvailable: offlineMode === 'unavailable',
     active: offlineMode === 'on',
+    lastRun: lastRun,
   };
 }
 
@@ -55,6 +59,11 @@ export function setCurrentOfflineMode(mode: OfflineMode) {
     localStorage.setItem(offlineModeStorageKey, mode === 'on' ? 'active' : 'disabled');
     offlineMode = mode;
   }
+  lastRun = new Date().toLocaleString();
+}
+
+export function registerOfflineHandler(setupOffline: OfflineHandler) {
+  window.addEventListener('openmrs:offline-enabled', setupOffline);
 }
 
 export async function activateOfflineCapability() {
