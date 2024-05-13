@@ -1,17 +1,18 @@
-import { type ActivityFn, type LifeCycles, pathToActiveWhen, registerApplication } from 'single-spa';
+import { type ActivityFn, type LifeCycles, pathToActiveWhen } from 'single-spa';
 import {
-  type RegisteredPageDefinition,
   type ExtensionDefinition,
+  type Loadable,
   type OpenmrsAppRoutes,
+  type RegisteredPageDefinition,
   type RouteDefinition,
-  type ExtensionRegistration,
   type ModalDefinition,
   type WorkspaceDefinition,
   attach,
-  registerExtension,
   importDynamic,
+  registerExtension,
   registerModal,
   registerModuleWithConfigSystem,
+  registerPage,
   registerWorkspace,
 } from '@openmrs/esm-framework/src/internal';
 import { emptyLifecycle, routeRegex } from './helpers';
@@ -149,6 +150,7 @@ export function registerApp(appName: string, routes: OpenmrsAppRoutes) {
       ) {
         pages.push({
           ...p,
+          type: p.type ?? 'main',
           order: p.order ?? Number.MAX_SAFE_INTEGER,
           appName,
         });
@@ -229,6 +231,7 @@ export function finishRegisteringAllApps() {
     }
     const index = appIndices.get(page.appName);
 
+    page.order = index;
     const name = `${page.appName}-page-${index}`;
     const div = document.createElement('div');
     div.id = `single-spa-application:${name}`;
@@ -273,7 +276,14 @@ To fix this, ensure that you define the "component" field inside the page defini
 
   const activityFn = wrapPageActivityFn(getActivityFn(route), page);
   const loader = getLoader(page.appName, page.component);
-  registerApplication(appName, loader, activityFn);
+  if (loader) {
+    registerPage({
+      ...page,
+      appName: appName,
+      activityFn,
+      load: loader,
+    });
+  }
 }
 
 /**
@@ -312,7 +322,7 @@ To fix this, ensure that you define a 'component' field inside the extension def
     return;
   }
 
-  let loader: ExtensionRegistration['load'] | undefined = undefined;
+  let loader: Loadable | undefined = undefined;
   if (extension.component) {
     loader = getLoader(appName, extension.component);
   } else if (extension.load) {
@@ -372,7 +382,7 @@ To fix this, ensure that you define a 'component' field inside the modal definit
     return;
   }
 
-  let loader: ExtensionRegistration['load'] | undefined = undefined;
+  let loader: Loadable | undefined = undefined;
   if (modal.component) {
     loader = getLoader(appName, modal.component);
   } else if (modal.load) {
@@ -431,7 +441,7 @@ To fix this, ensure that you define a 'component' field inside the workspace def
     return;
   }
 
-  let loader: ExtensionRegistration['load'] | undefined = undefined;
+  let loader: Loadable | undefined = undefined;
   if (workspace.component) {
     loader = getLoader(appName, workspace.component);
   } else if (workspace.load) {
