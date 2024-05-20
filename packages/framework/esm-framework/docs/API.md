@@ -1781,7 +1781,7 @@ ___
 
 #### Defined in
 
-[packages/framework/esm-react-utils/src/useLocations.tsx:6](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-react-utils/src/useLocations.tsx#L6)
+[packages/framework/esm-react-utils/src/useLocations.ts:6](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-react-utils/src/useLocations.ts#L6)
 
 ___
 
