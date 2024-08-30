@@ -200,6 +200,7 @@
 ### UI Functions
 
 - [CustomOverflowMenu](API.md#customoverflowmenu)
+- [GlobalNavGroup](API.md#globalnavgroup)
 - [PatientBannerActionsMenu](API.md#patientbanneractionsmenu)
 - [PatientBannerContactDetails](API.md#patientbannercontactdetails)
 - [PatientBannerPatientInfo](API.md#patientbannerpatientinfo)
@@ -2006,7 +2007,7 @@ ___
 
 #### Defined in
 
-[packages/framework/esm-styleguide/src/left-nav/index.tsx:31](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L31)
+[packages/framework/esm-styleguide/src/left-nav/index.tsx:30](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L30)
 
 ___
 
@@ -2077,6 +2078,43 @@ This provides a light background for form inputs on tablets, in accordance with 
 #### Defined in
 
 [packages/framework/esm-styleguide/src/responsive-wrapper/responsive-wrapper.component.tsx:15](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/responsive-wrapper/responsive-wrapper.component.tsx#L15)
+
+___
+
+### globalNavGroupConfigSchema
+
+• `Const` **globalNavGroupConfigSchema**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `isExpanded` | { `_default`: `boolean` = true; `_description`: `string` = 'The boolean to determine whether the nav group is expanded or not.'; `_type`: [`Type`](enums/Type.md) = Type.Boolean } |
+| `isExpanded._default` | `boolean` |
+| `isExpanded._description` | `string` |
+| `isExpanded._type` | [`Type`](enums/Type.md) |
+| `slotName` | { `_default`: `string` = 'global-nav-group-slot'; `_description`: `string` = 'The name of the slot to create, which links can be added to.'; `_type`: [`Type`](enums/Type.md) = Type.String } |
+| `slotName._default` | `string` |
+| `slotName._description` | `string` |
+| `slotName._type` | [`Type`](enums/Type.md) |
+| `title` | { `_default`: `string` = 'myGroup'; `_description`: `string` = 'The title of the nav group.'; `_type`: [`Type`](enums/Type.md) = Type.String } |
+| `title._default` | `string` |
+| `title._description` | `string` |
+| `title._type` | [`Type`](enums/Type.md) |
+
+#### Defined in
+
+[packages/framework/esm-styleguide/src/nav-group/index.tsx:11](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/nav-group/index.tsx#L11)
+
+___
+
+### globalNavGroupFeatureName
+
+• `Const` **globalNavGroupFeatureName**: ``"Nav Group"``
+
+#### Defined in
+
+[packages/framework/esm-styleguide/src/nav-group/index.tsx:9](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/nav-group/index.tsx#L9)
 
 ___
 
@@ -6138,6 +6176,26 @@ ___
 
 ___
 
+### GlobalNavGroup
+
+▸ **GlobalNavGroup**(`__namedParameters`): `Element`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | [`NavGroupProps`](interfaces/NavGroupProps.md) |
+
+#### Returns
+
+`Element`
+
+#### Defined in
+
+[packages/framework/esm-styleguide/src/nav-group/index.tsx:39](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/nav-group/index.tsx#L39)
+
+___
+
 ### PatientBannerActionsMenu
 
 ▸ **PatientBannerActionsMenu**(`__namedParameters`): `Element`
@@ -6278,7 +6336,7 @@ ___
 
 #### Defined in
 
-[packages/framework/esm-styleguide/src/left-nav/index.tsx:19](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L19)
+[packages/framework/esm-styleguide/src/left-nav/index.tsx:18](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L18)
 
 ___
 
@@ -6527,7 +6585,7 @@ ___
 
 #### Defined in
 
-[packages/framework/esm-styleguide/src/left-nav/index.tsx:23](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L23)
+[packages/framework/esm-styleguide/src/left-nav/index.tsx:22](https://github.com/openmrs/openmrs-esm-core/blob/main/packages/framework/esm-styleguide/src/left-nav/index.tsx#L22)
 
 ___
 
